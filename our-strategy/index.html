@@ -501,7 +501,11 @@
     .dropdown{position:static; transform:none; opacity:1; visibility:visible; max-height:0; overflow:hidden; border:none; padding:0; margin-top:4px; box-shadow:none; transition:max-height .25s ease;}
     .has-dropdown.open .dropdown{max-height:160px; padding:6px 0 0;}
     .has-dropdown.open svg{transform:rotate(180deg);}
-    .nav-cta{width:100%; margin-top:8px;}
+    .nav-cta{display:none;}
+    nav.links.open ~ .nav-cta{
+      display:inline-flex; position:fixed; left:32px; right:32px; bottom:28px;
+      width:auto; margin-top:0; z-index:61; justify-content:center;
+    }
     .mobile-toggle{display:flex; flex-direction:column; gap:5px; background:none; border:none; padding:6px; z-index:60;}
     .mobile-toggle span{width:24px; height:2px; background:var(--forest); border-radius:2px;}
     .hero{padding:44px 0 64px;}
@@ -563,12 +567,16 @@
   }
   .process-hero-copy{padding-top:38px;}
   .process-hero-copy p{color:var(--text-mute); font-size:1.05rem; line-height:1.6; margin-bottom:16px;}
+  .process-hero-copy .hero-lead{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600;
+    color:var(--forest); font-size:1.28rem; line-height:1.5; margin-bottom:20px;
+  }
   .process-hero-copy p:last-child{margin-bottom:0;}
 
   .process-content{padding:0 0 100px;}
   .section-divider-wrap{padding:8px 0 48px;}
   .section-divider{border-top:1px solid var(--border); width:100%;}
-  .process-content-inner{max-width:860px; margin:0 auto;}
+  .process-content-inner{max-width:1200px; margin:0 auto;}
   .content-block{margin-bottom:76px;}
   .content-block:last-child{margin-bottom:0;}
   .content-block .eyebrow-small{
@@ -699,6 +707,152 @@
   .spend-stat-num{font-family:'Archivo', sans-serif; font-weight:800; letter-spacing:-0.01em; font-size:1.5rem; color:var(--forest); line-height:1;}
   .spend-stat-label{font-family:'DM Sans', sans-serif; font-size:0.78rem; letter-spacing:0.04em; color:var(--text-mute); margin-top:6px;}
 
+  /* ---------- Funnel visual (lead-quality) ---------- */
+  .funnel-visual{
+    display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+    margin:24px 0; padding:22px 24px; background:var(--cream-2); border-radius:14px;
+  }
+  .funnel-step{
+    font-family:'DM Sans', sans-serif; font-size:0.86rem; font-weight:600; color:var(--forest);
+    background:var(--white); border:1px solid var(--border); border-radius:999px; padding:8px 16px;
+  }
+  .funnel-step.funnel-final{background:var(--teal); color:var(--white); border-color:var(--teal);}
+
+  /* ---------- Deliver grid (What We Deliver / Why Clients Choose Us) ---------- */
+  .deliver-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:24px;}
+  .deliver-card{background:var(--white); border:1px solid var(--border); border-radius:14px; padding:26px 28px;}
+  .deliver-card h4{font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest); font-size:1.15rem; margin-bottom:12px;}
+  .deliver-card ul{margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .deliver-card li{list-style:none; color:var(--text-mute); font-size:0.9rem; line-height:1.5; padding-left:18px; position:relative;}
+  .deliver-card li::before{content:''; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:50%; background:var(--teal);}
+  .deliver-card.statement-card p{color:var(--text-mute); font-size:0.92rem; line-height:1.55; margin:0;}
+
+  /* ---------- FAQ accordion ---------- */
+  .faq-list{border-top:1px solid var(--border); margin-top:24px;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-question{
+    width:100%; background:none; border:none; color:var(--forest);
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:22px 0; text-align:left; font-family:'Cormorant Garamond', serif; font-weight:700; font-size:1.15rem;
+    cursor:pointer;
+  }
+  .faq-plus{
+    width:28px; height:28px; border-radius:50%; border:1.5px solid var(--border);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .faq-plus::before, .faq-plus::after{content:''; position:absolute; background:var(--forest);}
+  .faq-plus::before{width:11px; height:2px;}
+  .faq-plus::after{width:2px; height:11px;}
+  .faq-item.open .faq-plus{transform:rotate(135deg); border-color:var(--teal);}
+  .faq-answer{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-answer-inner{padding:0 0 24px; color:var(--text-mute); font-size:0.96rem; line-height:1.6; max-width:680px;}
+
+  /* ---------- Split layout: text beside visual ---------- */
+  .split-block{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .split-text{max-width:560px;}
+  .split-text .eyebrow-small, .split-text h2{order:0;}
+  .split-visual{width:100%; order:2;}
+  .split-block .split-text{order:1;}
+  .split-block.reverse .split-text{order:2;}
+  .split-block.reverse .split-visual{order:1;}
+  .split-visual .pull-quote{margin-top:20px;}
+
+  /* Message stack visual */
+  .stat-callout{text-align:center; margin-bottom:22px;}
+  .stat-callout .num{font-family:'Archivo', sans-serif; font-weight:800; font-size:2.6rem; color:var(--forest); line-height:1; letter-spacing:-0.01em;}
+  .stat-callout .label{font-family:'DM Sans', sans-serif; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); margin-top:8px;}
+  .message-stack{display:flex; flex-direction:column; gap:11px;}
+  .message-card{
+    background:var(--white); border:1px solid var(--border); border-left:4px solid var(--teal);
+    border-radius:10px; padding:13px 18px; display:flex; align-items:center; gap:13px;
+    box-shadow:0 4px 14px -10px rgba(28,43,51,0.25);
+  }
+  .message-card .msg-num{
+    font-family:'Archivo', sans-serif; font-weight:800; color:var(--teal); font-size:0.8rem; flex-shrink:0;
+    width:24px; height:24px; border-radius:50%; background:rgba(23,195,162,0.12);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .message-card span.msg-text{font-family:'DM Sans', sans-serif; font-size:0.9rem; color:var(--forest); line-height:1.35;}
+
+  /* Objective grid - single column variant for use inside a split-visual */
+  .objective-grid.stacked{grid-template-columns:1fr; gap:14px;}
+
+  /* Vertical funnel variant for use inside a split-visual */
+  .funnel-visual.vertical{
+    flex-direction:column; align-items:center; gap:0;
+    position:relative; padding:32px 24px;
+  }
+  .funnel-visual.vertical::before{
+    content:'';
+    position:absolute;
+    top:56px; bottom:56px; left:50%;
+    width:2px;
+    background:repeating-linear-gradient(to bottom, var(--border-strong,var(--border)) 0 5px, transparent 5px 11px);
+    transform:translateX(-50%);
+    z-index:0;
+  }
+  .funnel-visual.vertical .funnel-step{
+    position:relative; z-index:1;
+    margin:9px 0;
+    min-width:120px;
+    text-align:center;
+    box-shadow:0 2px 8px -4px rgba(28,43,51,0.15);
+  }
+
+  /* Audience card (Value Assets / warm audience visual) */
+  .audience-card-group{display:flex; flex-direction:column; gap:16px;}
+  .audience-card{
+    background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px 24px;
+    display:flex; gap:16px; align-items:flex-start;
+  }
+  .audience-card .num{
+    width:38px; height:38px; border-radius:50%; background:var(--forest); color:var(--cream);
+    display:flex; align-items:center; justify-content:center; font-family:'Archivo', sans-serif;
+    font-weight:800; font-size:1rem; flex-shrink:0;
+  }
+  .audience-card .journey-title{font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest); font-size:1.1rem; margin-bottom:4px;}
+  .audience-card p{color:var(--text-mute); font-size:0.9rem; line-height:1.5; margin:0;}
+  .audience-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+
+  /* Journey steps as a full-width flow grid (Campaign Journey) */
+  .journey-steps.flow-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:32px 28px;
+    flex-direction:unset;
+  }
+  .journey-steps.flow-grid .journey-step{flex-direction:column; align-items:flex-start; gap:0;}
+  .journey-steps.flow-grid .journey-step .num{margin-bottom:14px;}
+
+  /* Deliver grid column variants */
+  .deliver-grid.cols-4{grid-template-columns:repeat(4,1fr);}
+  .deliver-grid.cols-3{grid-template-columns:repeat(3,1fr);}
+
+  /* FAQ two-column layout */
+  .faq-columns{display:grid; grid-template-columns:1fr 1fr; gap:0 56px; margin-top:24px;}
+  .faq-columns .faq-list{margin-top:0;}
+
+  @media (max-width:1000px){
+    .split-block{grid-template-columns:1fr; gap:36px;}
+    .split-text{max-width:none;}
+    .split-block .split-text, .split-block.reverse .split-text{order:1;}
+    .split-block .split-visual, .split-block.reverse .split-visual{order:2;}
+  }
+  @media (max-width:900px){
+    .journey-steps.flow-grid{grid-template-columns:repeat(2,1fr); row-gap:36px;}
+    .deliver-grid.cols-4{grid-template-columns:repeat(2,1fr);}
+    .deliver-grid.cols-3{grid-template-columns:repeat(2,1fr);}
+    .faq-columns{grid-template-columns:1fr;}
+  }
+
+  @media (max-width:900px){
+    .deliver-grid{grid-template-columns:1fr;}
+  }
+
   @media (max-width:760px){
     section{padding:64px 0;}
     .process-hero{padding:32px 0 28px;}
@@ -715,6 +869,15 @@
     .industry-tab{padding:9px 16px; font-size:0.82rem;}
     .spend-stats{gap:22px; padding:18px 20px;}
     .spend-stat-num{font-size:1.25rem;}
+    .funnel-visual{padding:18px; gap:6px;}
+    .funnel-visual.vertical{padding:24px 18px;}
+    .funnel-visual.vertical::before{top:44px; bottom:44px;}
+    .funnel-step{font-size:0.78rem; padding:6px 12px;}
+    .faq-question{font-size:1.02rem; gap:14px;}
+    .journey-steps.flow-grid{grid-template-columns:1fr;}
+    .deliver-grid.cols-4{grid-template-columns:1fr;}
+    .deliver-grid.cols-3{grid-template-columns:1fr;}
+    .stat-callout .num{font-size:2.1rem;}
   }
 </style>
 </head>
@@ -732,8 +895,9 @@
         <h1>We Don&rsquo;t Just Run Ads. We Step Into Your Marketing Seat.</h1>
       </div>
       <div class="process-hero-copy">
-        <p>Successful live-event marketing takes more than one advertisement and hoping the right people respond. We work as an extension of your team &mdash; learning your business, your audience, and the complete event-marketing strategy.</p>
-        <p>From positioning and creative to paid media, social content and retargeting, we approach the campaign as if we were sitting in your marketing seat &mdash; not taking an order and sending a report. We come in as a partner.</p>
+        <p class="hero-lead">Strategic marketing for live events &mdash; from the first message to the final business outcome.</p>
+        <p>Successful live-event marketing takes more than one advertisement and hoping the right people register. We work as an extension of your team &mdash; learning your business, your audience, and helping shape the entire strategy around your event using an approach we call microdosing the message.</p>
+        <p>We don&rsquo;t wait for you to hand us the strategy, copy and creative. We step into the marketing seat, work alongside your team, and take responsibility for building a connected system around your event.</p>
       </div>
     </div>
   </section>
@@ -746,110 +910,114 @@
   <section class="process-content">
     <div class="wrap process-content-inner">
 
-      <div class="content-block">
-        <span class="eyebrow-small">The Philosophy</span>
-        <h2>A different approach to live-event marketing</h2>
-        <p>The traditional approach often relies on one or two event advertisements that repeat the same message until registration closes. Our approach is more strategic.</p>
-        <p>We create an integrated campaign that uses multiple educational messages, supporting social content, boosted posts, retargeting and deadline-driven advertising to move people from initial awareness to completed registration.</p>
-        <p class="pull-quote">Instead of asking one advertisement to do everything, we build a connected system around the event.</p>
-      </div>
-
-      <div class="content-block">
-        <span class="eyebrow-small">The Core Method</span>
-        <h2>Microdosed event messaging</h2>
-        <p>Rather than overwhelming someone with every event topic in one advertisement, we break the campaign into several short, focused messages. A 10&ndash;14-day campaign may include five to seven different messaging angles, such as:</p>
-        <div class="topic-pills">
-          <span class="topic-pill">A specific problem the event will address</span>
-          <span class="topic-pill">A commonly overlooked risk or cost</span>
-          <span class="topic-pill">An important timing consideration</span>
-          <span class="topic-pill">An educational or curiosity-driven topic</span>
-          <span class="topic-pill">Information about the presenter</span>
-          <span class="topic-pill">A look at the live classroom experience</span>
-          <span class="topic-pill">A final registration or deadline reminder</span>
+      <div class="content-block split-block">
+        <div class="split-text">
+          <span class="eyebrow-small">The Philosophy</span>
+          <h2>More than a traditional advertising agency</h2>
+          <p>A traditional agency may ask for your offer, budget, audience and creative &mdash; then launch an advertisement. Our model is different. We collaborate with your team to determine who should be in the room, what matters most to them, and why someone should attend this particular event.</p>
+          <p>Many event campaigns rely on one or two advertisements that repeat the same message until registration closes &mdash; one graphic, one headline, one call to action, shown to everyone regardless of what actually motivates them. Rather than asking one advertisement to explain everything, we break the campaign into several short, focused messages. Each ad delivers one clear idea.</p>
+          <p class="pull-quote">The key is to microdose the message &mdash; without fragmenting the budget.</p>
         </div>
-        <p>A traditional campaign may show someone the same advertisement three to six times. A microdosed campaign can deliver several different messages across those impressions, creating familiarity without relying on the same creative repeatedly.</p>
-        <p>Not every person will see every message. Meta tests the different ads and directs more delivery toward the messages most likely to produce the selected goal. That may result in one clear winner, or Meta may continue using two or three ads because different messages resonate with different people.</p>
-        <p class="pull-quote">The key is to microdose the message &mdash; not fragment the budget.</p>
-      </div>
-
-      <div class="content-block">
-        <span class="eyebrow-small">The Mechanics</span>
-        <h2>Paid advertising that learns</h2>
-        <p>We place the primary advertisements together inside a consolidated Meta Ads Manager campaign. This allows Meta to compare the creative, identify likely performers and direct more of the campaign budget toward the advertisements producing the desired action.</p>
-        <p>The campaign objective matters. If a campaign is optimized for engagement, Meta will look for reactions, comments, video views and clicks. If it is optimized for completed registrations, Meta will look for people most likely to register for the event.</p>
-        <div class="objective-grid">
-          <div class="objective-card">
-            <h4>Engagement</h4>
-            <p>Reactions, comments, video views and clicks</p>
+        <div class="split-visual">
+          <div class="stat-callout">
+            <div class="num">5&ndash;7</div>
+            <div class="label">Messaging Angles Per Campaign</div>
           </div>
-          <div class="objective-card">
-            <h4>Traffic</h4>
-            <p>Website visits</p>
-          </div>
-          <div class="objective-card highlight">
-            <h4>Completed Registrations</h4>
-            <p>Our primary focus for live events</p>
+          <div class="message-stack">
+            <div class="message-card"><span class="msg-num">1</span><span class="msg-text">A specific problem the event will address</span></div>
+            <div class="message-card"><span class="msg-num">2</span><span class="msg-text">A commonly overlooked risk or expense</span></div>
+            <div class="message-card"><span class="msg-num">3</span><span class="msg-text">An important deadline or timing consideration</span></div>
+            <div class="message-card"><span class="msg-num">4</span><span class="msg-text">The presenter&rsquo;s experience and credibility</span></div>
+            <div class="message-card"><span class="msg-num">5</span><span class="msg-text">The classroom or live-event experience</span></div>
+            <div class="message-card"><span class="msg-num">6</span><span class="msg-text">Registration closing or limited-seat urgency</span></div>
           </div>
         </div>
-        <p class="pull-quote">For live events, our primary focus is typically completed registrations &mdash; not vanity metrics.</p>
-        <p>We monitor performance, identify the strongest messages and make informed adjustments without constantly disrupting Meta&rsquo;s learning process.</p>
       </div>
 
-      <div class="content-block">
-        <span class="eyebrow-small">Beyond Paid Media</span>
-        <h2>Organic and boosted content</h2>
-        <p>Direct-response advertising is only one part of the campaign. We also create educational Facebook and Instagram posts that help introduce the event topics, establish the presenter&rsquo;s credibility and make the client&rsquo;s social pages feel active and informative. Selected posts may be boosted to reach more people in the target market.</p>
-        <p>This gives the client an additional deliverable beyond traditional advertisements. The content remains visible on the client&rsquo;s page after the paid campaign ends and can continue building awareness, engagement and social proof.</p>
-        <h3>Organic and boosted content can help:</h3>
-        <ul class="checklist list-single">
-          <li>Introduce individual event topics in an approachable format</li>
-          <li>Build familiarity with the presenter and organization</li>
-          <li>Generate visible engagement and social proof</li>
-          <li>Reach people who may not respond to a direct registration ad immediately</li>
-          <li>Keep the client&rsquo;s social pages active and educational</li>
-          <li>Create warm audiences for retargeting</li>
-          <li>Support future events and ongoing campaigns</li>
-        </ul>
-      </div>
-
-      <div class="content-block">
-        <span class="eyebrow-small">Long-Term Value</span>
-        <h2>Building audiences that become more valuable over time</h2>
-        <p>Each campaign should make the next campaign stronger. Meta allows us to build privacy-safe Custom Audiences from eligible engagement with a client&rsquo;s Facebook and Instagram content. These warm audiences may include people who engaged with social content, watched videos, interacted with an event or visited the registration website.</p>
-        <h3>We can then retarget those audiences with:</h3>
-        <ul class="checklist list-single">
-          <li>Event-registration advertisements</li>
-          <li>Deadline and limited-time reminders</li>
-          <li>Additional educational content</li>
-          <li>Presenter introductions</li>
-          <li>Future event announcements</li>
-          <li>Related campaigns and follow-up opportunities</li>
-        </ul>
-        <p>Engagement audiences remain inside Meta. They do not provide personal names, email addresses or phone numbers. When someone voluntarily completes an event registration or lead form, that person becomes an identifiable lead the client can follow up with according to the appropriate permissions and disclosures.</p>
-        <h3>This creates two valuable assets:</h3>
-        <div class="journey-steps">
-          <div class="journey-step">
-            <div class="num">1</div>
-            <div>
-              <div class="journey-title">A growing warm audience</div>
-              <p>Built inside Meta with every campaign you run.</p>
+      <div class="content-block split-block reverse">
+        <div class="split-text">
+          <span class="eyebrow-small">The Mechanics</span>
+          <h2>Paid advertising that learns</h2>
+          <p>We place the primary advertisements together inside a consolidated Meta Ads Manager campaign. This gives Meta multiple creative options while keeping the budget and performance data connected &mdash; testing, learning, and shifting delivery toward whatever is actually working.</p>
+          <p>Direct-response advertising is only one part of it. We also create educational Facebook and Instagram posts that introduce event topics and build credibility &mdash; content that stays visible on your pages long after the paid campaign ends and keeps building warm audiences for retargeting.</p>
+          <p class="pull-quote">For most live-event campaigns, the objective should be the meaningful action we want someone to complete &mdash; not simply a low-cost click or reaction.</p>
+        </div>
+        <div class="split-visual">
+          <div class="objective-grid stacked">
+            <div class="objective-card">
+              <h4>Engagement</h4>
+              <p>Reactions, comments, video views and clicks</p>
             </div>
-          </div>
-          <div class="journey-step">
-            <div class="num">2</div>
-            <div>
-              <div class="journey-title">An owned list</div>
-              <p>People who voluntarily registered or requested information.</p>
+            <div class="objective-card">
+              <h4>Traffic</h4>
+              <p>Website visits</p>
+            </div>
+            <div class="objective-card highlight">
+              <h4>Completed Registrations</h4>
+              <p>Our primary focus for most live-event campaigns</p>
             </div>
           </div>
         </div>
-        <p class="pull-quote">The result is not just a single event campaign. It is a marketing foundation that can become more effective with every event.</p>
+      </div>
+
+      <div class="content-block split-block">
+        <div class="split-text">
+          <span class="eyebrow-small">Lead Quality</span>
+          <h2>Teaching Meta what a quality lead looks like</h2>
+          <p>Most campaigns stop measuring when someone submits a form. We want to know what happened next &mdash; did they confirm, attend, purchase, or become a qualified opportunity? A form submission tells Meta who&rsquo;s willing to fill out a form. It doesn&rsquo;t tell Meta who&rsquo;s likely to actually show up or become a real opportunity.</p>
+          <p>With the right CRM setup &mdash; including TofuDown, where applicable &mdash; stronger downstream events can be sent back to Meta through Conversions API, so future campaigns can optimize toward people who are more likely to actually become a valuable outcome, not just fill out a form.</p>
+          <p class="pull-quote">Our objective isn&rsquo;t simply to produce the cheapest names. It&rsquo;s to improve the cost of creating meaningful business outcomes.</p>
+        </div>
+        <div class="split-visual">
+          <div class="funnel-visual vertical">
+            <span class="funnel-step">Lead</span>
+            <span class="funnel-step">Registered</span>
+            <span class="funnel-step">Confirmed</span>
+            <span class="funnel-step">Attended</span>
+            <span class="funnel-step">Qualified</span>
+            <span class="funnel-step funnel-final">Client</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block split-block reverse">
+        <div class="split-text">
+          <span class="eyebrow-small">Give Before You Ask, Then Compound</span>
+          <h2>Building audiences that get more valuable over time</h2>
+          <p>Sometimes the most effective way to fill a future event is to give something genuinely useful first &mdash; what we call a Value Asset: a guide, checklist, calculator or scorecard that addresses a real concern in your market.</p>
+          <p>Each campaign should make the next one stronger. Eligible engagement with your Facebook and Instagram content can build privacy-safe Custom Audiences inside Meta for retargeting. These audiences stay inside Meta and don&rsquo;t hand over personal names or emails &mdash; someone becomes an identifiable lead only when they voluntarily complete a registration, ticket purchase, or Value Asset request.</p>
+          <p class="pull-quote">Give value first. Earn attention. Build trust. Create the next conversation.</p>
+        </div>
+        <div class="split-visual">
+          <div class="audience-card-group">
+            <div class="audience-card">
+              <div class="num">1</div>
+              <div>
+                <div class="journey-title">A growing warm audience</div>
+                <p>Built inside Meta with every campaign you run.</p>
+              </div>
+            </div>
+            <div class="audience-card">
+              <div class="num">2</div>
+              <div>
+                <div class="journey-title">An owned list</div>
+                <p>People who voluntarily registered or requested a resource.</p>
+              </div>
+            </div>
+          </div>
+          <div class="audience-tags">
+            <span class="topic-pill">Educational guides</span>
+            <span class="topic-pill">Planning checklists</span>
+            <span class="topic-pill">Readiness scorecards</span>
+            <span class="topic-pill">Calculators &amp; worksheets</span>
+          </div>
+        </div>
       </div>
 
       <div class="content-block">
         <span class="eyebrow-small">How We Work</span>
         <h2>The campaign journey</h2>
-        <div class="journey-steps">
+        <div class="journey-steps flow-grid">
           <div class="journey-step">
             <div class="num">1</div>
             <div>
@@ -895,8 +1063,8 @@
           <div class="journey-step">
             <div class="num">7</div>
             <div>
-              <div class="journey-title">Learn and Improve</div>
-              <p>We evaluate which topics, images, headlines and calls to action produced the strongest response and apply those findings to the next campaign.</p>
+              <div class="journey-title">Track Results &amp; Improve</div>
+              <p>We review confirmations, attendance and outcomes &mdash; not just form submissions &mdash; and apply what worked to the next campaign.</p>
             </div>
           </div>
         </div>
@@ -905,28 +1073,45 @@
       <div class="content-block">
         <span class="eyebrow-small">The Full Scope</span>
         <h2>What we can deliver</h2>
-        <p>Depending on the campaign, our live-event marketing support may include:</p>
-        <ul class="checklist">
-          <li>Event strategy and positioning</li>
-          <li>Audience and market research</li>
-          <li>Five to seven focused advertising messages</li>
-          <li>Meta campaign setup and management</li>
-          <li>Advertising copy and creative direction</li>
-          <li>Static image and video advertising concepts</li>
-          <li>Three to five educational social posts</li>
-          <li>Strategically boosted Facebook and Instagram posts</li>
-          <li>Presenter and credibility-focused content</li>
-          <li>Registration landing-page strategy</li>
-          <li>Lead-form and registration-flow recommendations</li>
-          <li>Engagement-based Custom Audience setup</li>
-          <li>Website-visitor retargeting</li>
-          <li>Video-viewer retargeting</li>
-          <li>Registration reminder advertising</li>
-          <li>Deadline and urgency campaigns</li>
-          <li>Performance monitoring and optimization</li>
-          <li>Post-campaign reporting and recommendations</li>
-          <li>Audience development for future events</li>
-        </ul>
+        <p>Services are customized based on the event, your existing systems, and the campaign objective.</p>
+        <div class="deliver-grid cols-4">
+          <div class="deliver-card">
+            <h4>Strategy &amp; Positioning</h4>
+            <ul>
+              <li>Event strategy &amp; positioning</li>
+              <li>Audience &amp; market research</li>
+              <li>Value Asset strategy</li>
+              <li>Post-event marketing strategy</li>
+            </ul>
+          </div>
+          <div class="deliver-card">
+            <h4>Advertising &amp; Content</h4>
+            <ul>
+              <li>Meta campaign setup &amp; management</li>
+              <li>5&ndash;7 focused advertising angles</li>
+              <li>Educational social posts &amp; boosted content</li>
+              <li>Retargeting &amp; urgency campaigns</li>
+            </ul>
+          </div>
+          <div class="deliver-card">
+            <h4>Audience &amp; Lead Development</h4>
+            <ul>
+              <li>Value Asset creation (guides, checklists, calculators)</li>
+              <li>Custom Audience &amp; retargeting setup</li>
+              <li>Permission-based first-party list building</li>
+              <li>Previous-attendee &amp; customer audiences</li>
+            </ul>
+          </div>
+          <div class="deliver-card">
+            <h4>Tracking &amp; Optimization</h4>
+            <ul>
+              <li>Registration &amp; lead tracking</li>
+              <li>CRM lead-stage mapping (TofuDown where applicable)</li>
+              <li>Conversions API planning</li>
+              <li>Performance reporting &amp; next-campaign recommendations</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="content-block">
@@ -1215,14 +1400,108 @@
 
       <div class="content-block">
         <span class="eyebrow-small">Our Difference</span>
-        <h2>More than an agency</h2>
-        <p>A traditional agency may wait for the client to provide the offer, message, creative and instructions. That isn&rsquo;t our model. We collaborate with the client, help identify what should be communicated and take responsibility for building the complete campaign around the event.</p>
-        <div class="statement-lines">
-          <p>We think about the audience.</p>
-          <p>We think about the registration experience.</p>
-          <p>We think about what happens before the event, what happens after it, and how today&rsquo;s campaign can create value for the next one.</p>
+        <h2>Why clients choose our partnership model</h2>
+        <p>We sit in the marketing seat alongside you and approach the work as a member of your team &mdash; because the goal isn&rsquo;t simply to run ads, it&rsquo;s to build a repeatable system that gets smarter with every campaign.</p>
+        <div class="deliver-grid cols-3">
+          <div class="deliver-card statement-card">
+            <h4>We Work Like a Team Member</h4>
+            <p>We collaborate with you instead of operating as a disconnected vendor.</p>
+          </div>
+          <div class="deliver-card statement-card">
+            <h4>We Think Beyond the Ad</h4>
+            <p>Message, landing page, follow-up, attendance and long-term audience value.</p>
+          </div>
+          <div class="deliver-card statement-card">
+            <h4>We Create Assets, Not Just Campaigns</h4>
+            <p>Guides, audiences and performance data that keep creating value after the event.</p>
+          </div>
+          <div class="deliver-card statement-card">
+            <h4>We Focus on Meaningful Outcomes</h4>
+            <p>Registrations, attendance and qualified opportunities &mdash; not just cheap clicks.</p>
+          </div>
+          <div class="deliver-card statement-card">
+            <h4>We Learn From Every Campaign</h4>
+            <p>Each event gives us more information to improve the next one.</p>
+          </div>
+          <div class="deliver-card statement-card">
+            <h4>We Build for the Future</h4>
+            <p>A repeatable system that becomes more useful and informed over time.</p>
+          </div>
         </div>
-        <p>We sit in the marketing seat alongside the client and approach the work as a member of their team. Because the goal isn&rsquo;t simply to run ads. The goal is to help build a repeatable event-marketing system that produces registrations, strengthens the client&rsquo;s presence and becomes smarter with every campaign.</p>
+      </div>
+
+      <div class="content-block">
+        <span class="eyebrow-small">Questions</span>
+        <h2>Frequently asked questions</h2>
+        <div class="faq-columns">
+          <div class="faq-list">
+            <div class="faq-item open">
+              <button class="faq-question" type="button">
+                <span>What is microdosed event marketing?</span>
+                <span class="faq-plus"></span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">Microdosed event marketing uses several short, focused messages rather than one advertisement to communicate the entire event. Each ad addresses one topic, concern or reason to attend.</div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Does everyone see every advertisement?</span>
+                <span class="faq-plus"></span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">No. Meta determines which ads are most likely to produce the campaign objective. Some people may see several different messages, while others may see only one or two.</div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Is boosting a post the same as running a registration campaign?</span>
+                <span class="faq-plus"></span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">No. A boosted post is often used for reach, engagement and social proof. A registration campaign is configured around a more specific conversion objective. We use both as complementary parts of the strategy.</div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>What is a Value Asset?</span>
+                <span class="faq-plus"></span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">A Value Asset is a useful educational resource &mdash; a guide, checklist, worksheet, calculator or scorecard &mdash; created to give an immediate benefit while helping you build a permission-based audience.</div>
+              </div>
+            </div>
+          </div>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Do we need CRM and Conversions API integration immediately?</span>
+                <span class="faq-plus"></span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">No. The first step is usually accurate tracking of leads, registrations or purchases. More advanced lead-quality optimization can be introduced once enough reliable data and the necessary systems are in place.</div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Will this always lower our cost per lead?</span>
+                <span class="faq-plus"></span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">No responsible marketer can guarantee that. The initial lead cost may decrease, stay stable, or increase. The more important objective is improving the cost per meaningful outcome &mdash; an attendee, a qualified opportunity, or an acquired client.</div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Is this approach only for financial events?</span>
+                <span class="faq-plus"></span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">No. The strategy adapts to educational workshops, seminars, conferences, community events, professional programs and other ticketed or live experiences. Campaign structure, targeting and claims always reflect your industry and applicable advertising requirements.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1231,14 +1510,34 @@
   <!-- FINAL CTA -->
   <section class="final-cta" id="contact">
     <div class="wrap">
-      <h2>Let&rsquo;s build your next event campaign.</h2>
-      <p style="font-family:'DM Sans', sans-serif; color:var(--text-mute); max-width:560px; margin:0 auto 34px; font-size:1.05rem; line-height:1.6;">If you&rsquo;re looking for someone to simply boost a post, there are plenty of traditional options. If you&rsquo;re looking for a marketing partner who will learn your business, develop the strategy and help build the complete campaign with you, let&rsquo;s talk.</p>
+      <h2>We don&rsquo;t just promote the next event. We help build what comes after it.</h2>
+      <p style="font-family:'DM Sans', sans-serif; color:var(--text-mute); max-width:560px; margin:0 auto 34px; font-size:1.05rem; line-height:1.6;">If you only need someone to boost a post, there are plenty of traditional options. If you want a partner who learns your business, develops the strategy and helps build the complete campaign with you, let&rsquo;s talk.</p>
       <a href="../index.html#contact" class="btn btn-primary">Tell Us About Your Event</a>
     </div>
+
   </section>
 
 </main>
 
+<script>
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var head = item.querySelector('.faq-question');
+    var body = item.querySelector('.faq-answer');
+    var inner = item.querySelector('.faq-answer-inner');
+    if (item.classList.contains('open')) body.style.maxHeight = inner.offsetHeight + 'px';
+    head.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-answer').style.maxHeight = 0;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = inner.offsetHeight + 'px';
+      }
+    });
+  });
+</script>
 
 {% include footer.html %}
 
