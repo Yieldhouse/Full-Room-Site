@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Healthcare &amp; Wellness Event Marketing | Full Room Digital</title>
+<title>Pricing | Full Room Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -550,426 +550,298 @@
 </style>
 
 <style>
-  /* ---------- Process page: page-specific ---------- */
-  section{padding:88px 0;}
+  /* ---------- Pricing page: page-specific ---------- */
   .process-hero{padding:52px 0 44px; text-align:left;}
   .process-hero .eyebrow{display:block; margin-bottom:22px;}
-  .process-hero-grid{
-    display:grid;
-    grid-template-columns:1fr 0.95fr;
-    gap:56px;
-    align-items:start;
-  }
+  .process-hero-grid{display:grid; grid-template-columns:1fr 0.95fr; gap:56px; align-items:start;}
   .process-hero h1{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    font-size:clamp(2.5rem, 4.4vw, 3.8rem);
-    color:var(--forest);
-    line-height:1.06;
-    margin:0;
+    font-family:'Cormorant Garamond', serif; font-weight:700;
+    font-size:clamp(2.5rem, 4.4vw, 3.8rem); color:var(--forest); line-height:1.06; margin:0;
   }
   .process-hero-copy{padding-top:38px;}
   .process-hero-copy p{color:var(--text-mute); font-size:1.05rem; line-height:1.6; margin-bottom:16px;}
   .process-hero-copy p:last-child{margin-bottom:0;}
-
-  .process-content{padding:0 0 100px;}
   .section-divider-wrap{padding:8px 0 48px;}
   .section-divider{border-top:1px solid var(--border); width:100%;}
-  .process-content-inner{max-width:860px; margin:0 auto;}
-  .content-block{margin-bottom:76px;}
-  .content-block:last-child{margin-bottom:0;}
-  .content-block .eyebrow-small{
-    font-family:'DM Sans', sans-serif; font-size:0.78rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--teal); font-weight:600; margin-bottom:14px; display:block;
-  }
-  .content-block h2{
-    font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest);
-    font-size:clamp(1.7rem, 3vw, 2.3rem); margin-bottom:20px; line-height:1.15;
-  }
-  .content-block h3{
-    font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest);
-    font-size:1.35rem; margin-bottom:16px; margin-top:36px;
-  }
-  .content-block > p{color:var(--text-mute); font-size:1.05rem; line-height:1.68; margin-bottom:18px;}
-  .content-block .fine-note{color:var(--text-faint,#8a9591); font-size:0.9rem; font-style:italic; margin-top:8px;}
 
-  .topic-pills{display:flex; flex-wrap:wrap; gap:12px; margin-top:12px;}
-  .topic-pill{
-    background:var(--white); border:1px solid var(--border); border-radius:999px;
-    padding:11px 20px; font-family:'DM Sans', sans-serif; font-size:0.93rem; color:var(--forest); font-weight:500;
-  }
+  /* Best-for tags under each pricing card */
+  .pcard-events{padding:16px 0 22px; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:26px;}
+  .pcard-events-label{display:block; font-family:'DM Sans', sans-serif; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint,#8a9591); font-weight:600; margin-bottom:10px;}
+  .pcard-events-tags{display:flex; flex-wrap:wrap; gap:7px;}
+  .pcard-tag{font-family:'DM Sans', sans-serif; font-size:0.76rem; font-weight:500; color:var(--forest); background:var(--cream-2); border:1px solid var(--border); border-radius:999px; padding:5px 11px;}
+  .pcard.featured .pcard-tag{background:rgba(23,195,162,0.1); border-color:rgba(23,195,162,0.3);}
 
-  .table-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:16px; margin-top:8px;}
+  /* Second comparison: tier feature matrix */
+  .tier-compare-section{background:var(--cream-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .compare-wrap{overflow-x:auto; border-radius:16px;}
   table.simple{width:100%; border-collapse:collapse; min-width:540px; background:var(--white);}
   table.simple thead th{
-    background:var(--cream-2); font-family:'DM Sans', sans-serif; font-size:0.76rem; letter-spacing:0.09em;
+    background:var(--white); font-family:'DM Sans', sans-serif; font-size:0.76rem; letter-spacing:0.09em;
     text-transform:uppercase; color:var(--text-mute); padding:16px 22px; text-align:left; border-bottom:1px solid var(--border);
   }
-  table.simple td{padding:20px 22px; border-bottom:1px solid var(--border); font-family:'DM Sans', sans-serif; font-size:0.97rem; color:var(--text-dark); vertical-align:top;}
+  table.simple thead th:first-child{border-top-left-radius:16px;}
+  table.simple thead th:last-child{border-top-right-radius:16px;}
+  table.simple td{padding:18px 22px; border-bottom:1px solid var(--border); font-family:'DM Sans', sans-serif; font-size:0.94rem; color:var(--text-dark); vertical-align:top;}
   table.simple tbody tr:last-child td{border-bottom:none;}
-  table.simple tbody tr.highlight td{background:rgba(23,195,162,0.07);}
-  table.simple .approach-name{font-family:'Cormorant Garamond', serif; font-weight:700; font-size:1.14rem; color:var(--forest);}
-  table.simple .approach-name.win{color:var(--teal);}
+  table.simple tbody tr:nth-child(even){background:var(--cream-2);}
 
-  .pull-quote{
-    border-left:3px solid var(--teal); padding:4px 0 4px 26px;
-    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.3rem;
-    color:var(--forest); line-height:1.5; margin:36px 0;
+  .faq-section .wrap{max-width:820px;}
+  .faq-list{border-top:1px solid var(--border); margin-top:24px;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-question{
+    width:100%; background:none; border:none; color:var(--forest);
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:22px 0; text-align:left; font-family:'Cormorant Garamond', serif; font-weight:700; font-size:1.15rem;
+    cursor:pointer;
   }
-
-  .timeline{display:flex; flex-direction:column; gap:0; border-left:2px solid var(--border); margin-left:10px; padding-left:36px; margin-top:24px;}
-  .timeline-item{position:relative; padding-bottom:30px;}
-  .timeline-item:last-child{padding-bottom:0;}
-  .timeline-item::before{
-    content:''; position:absolute; left:-43px; top:4px; width:12px; height:12px;
-    border-radius:50%; background:var(--teal); border:3px solid var(--cream);
+  .faq-plus{
+    width:28px; height:28px; border-radius:50%; border:1.5px solid var(--border);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative;
+    transition:transform .25s ease, border-color .25s ease;
   }
-  .timeline-item.final::before{background:var(--forest);}
-  .timeline-item .tl-days{
-    font-family:'DM Sans', sans-serif; font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--teal); font-weight:700; margin-bottom:6px;
-  }
-  .timeline-item.final .tl-days{color:var(--forest);}
-  .timeline-item .tl-title{font-family:'Cormorant Garamond', serif; font-weight:700; font-size:1.22rem; color:var(--forest);}
-
-  .meta-steps{display:flex; flex-direction:column; gap:24px; margin-top:20px;}
-  .meta-step{display:flex; gap:20px; align-items:flex-start;}
-  .meta-step .num{
-    width:38px; height:38px; border-radius:50%; background:var(--cream-2); border:2px solid var(--teal);
-    display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond', serif;
-    font-weight:700; color:var(--forest); flex-shrink:0; font-size:1rem;
-  }
-  .meta-step p{color:var(--text-mute); font-size:1rem; line-height:1.55; padding-top:6px; margin:0;}
-
-  .objective-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px;}
-  .objective-card{background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px 24px;}
-  .objective-card.highlight{border-color:var(--teal); background:rgba(23,195,162,0.05);}
-  .objective-card h4{font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest); font-size:1.12rem; margin-bottom:8px;}
-  .objective-card p{color:var(--text-mute); font-size:0.9rem; line-height:1.5; margin:0;}
-
-  .impact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:24px;}
-  .impact-card{background:var(--navy); border-radius:14px; padding:26px 22px; text-align:left;}
-  .impact-num{font-family:'Archivo', sans-serif; font-weight:800; letter-spacing:-0.01em; font-size:1.55rem; color:var(--teal); margin-bottom:10px; line-height:1;}
-  .impact-label{font-family:'DM Sans', sans-serif; font-size:0.86rem; color:#dbe4e0; line-height:1.4;}
-
-  .checklist{display:grid; grid-template-columns:repeat(2,1fr); gap:14px 40px; margin-top:16px; padding:0;}
-  .checklist li{list-style:none; padding-left:30px; position:relative; color:var(--text-dark); font-size:1rem; line-height:1.5;}
-  .checklist li::before{
-    content:''; position:absolute; left:0; top:5px; width:16px; height:16px; border-radius:5px;
-    background:rgba(23,195,162,0.15); border:1.5px solid var(--teal);
-  }
-
-  .note-box{background:var(--cream-2); border:1px solid var(--border); border-radius:16px; padding:30px 32px; margin-top:8px;}
-  .note-box p{color:var(--text-mute); font-size:0.98rem; line-height:1.65; margin-bottom:10px;}
-  .note-box p:last-child{margin-bottom:0;}
-  .note-box strong{color:var(--forest);}
-  .note-box .attribution{font-family:'DM Sans', sans-serif; font-size:0.84rem; color:var(--text-faint,#8a9591); font-style:italic;}
-
-  .checklist.list-single{grid-template-columns:1fr;}
-
-  .journey-steps{display:flex; flex-direction:column; gap:30px; margin-top:24px;}
-  .journey-step{display:flex; gap:22px; align-items:flex-start;}
-  .journey-step .num{
-    width:44px; height:44px; border-radius:50%; background:var(--forest); color:var(--cream);
-    display:flex; align-items:center; justify-content:center; font-family:'Archivo', sans-serif;
-    font-weight:800; font-size:1.1rem; flex-shrink:0;
-  }
-  .journey-step .journey-title{font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest); font-size:1.2rem; margin-bottom:6px;}
-  .journey-step p{color:var(--text-mute); font-size:0.98rem; line-height:1.55; margin:0;}
-
-  .statement-lines{margin:8px 0 0;}
-  .statement-lines p{
-    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600;
-    color:var(--forest); font-size:1.28rem; line-height:1.6; margin-bottom:10px;
-  }
-
-  .section-eyebrow-tag{
-    display:inline-block; font-family:'DM Sans', sans-serif; font-size:0.7rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--text-mute); background:var(--cream-2); border:1px solid var(--border);
-    padding:5px 12px; border-radius:999px; margin-bottom:18px;
-  }
-
-  .industry-tabs{display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 40px;}
-  .industry-tab{
-    font-family:'DM Sans', sans-serif; font-size:0.88rem; font-weight:600; color:var(--text-mute);
-    background:var(--white); border:1px solid var(--border); border-radius:999px; padding:11px 22px;
-    cursor:pointer; transition:background .2s ease, border-color .2s ease, color .2s ease;
-  }
-  .industry-tab:hover{border-color:var(--teal); color:var(--forest);}
-  .industry-tab.active{background:var(--forest); border-color:var(--forest); color:var(--white);}
-
-  .industry-panel{display:none;}
-  .industry-panel.active{display:block;}
-  .industry-panel > p:first-child{color:var(--text-mute); font-size:1.02rem; line-height:1.6;}
-
-  .spend-stats{display:flex; gap:36px; margin:20px 0 32px; flex-wrap:wrap; padding:24px 28px; background:var(--cream-2); border-radius:14px;}
-  .spend-stat-num{font-family:'Archivo', sans-serif; font-weight:800; letter-spacing:-0.01em; font-size:1.5rem; color:var(--forest); line-height:1;}
-  .spend-stat-label{font-family:'DM Sans', sans-serif; font-size:0.78rem; letter-spacing:0.04em; color:var(--text-mute); margin-top:6px;}
+  .faq-plus::before, .faq-plus::after{content:''; position:absolute; background:var(--forest);}
+  .faq-plus::before{width:11px; height:2px;}
+  .faq-plus::after{width:2px; height:11px;}
+  .faq-item.open .faq-plus{transform:rotate(135deg); border-color:var(--teal);}
+  .faq-answer{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-answer-inner{padding:0 0 24px; color:var(--text-mute); font-size:0.96rem; line-height:1.6; max-width:680px;}
 
   @media (max-width:760px){
-    section{padding:64px 0;}
     .process-hero{padding:32px 0 28px;}
-    .section-divider-wrap{padding:4px 0 32px;}
     .process-hero-grid{grid-template-columns:1fr; gap:24px;}
     .process-hero-copy{padding-top:0;}
-    .process-content{padding:0 0 72px;}
-    .content-block{margin-bottom:56px;}
-    .objective-grid{grid-template-columns:1fr;}
-    .impact-grid{grid-template-columns:repeat(2,1fr);}
-    .checklist{grid-template-columns:1fr;}
-    table.simple{min-width:480px;}
-    .industry-tabs{gap:8px;}
-    .industry-tab{padding:9px 16px; font-size:0.82rem;}
-    .spend-stats{gap:22px; padding:18px 20px;}
-    .spend-stat-num{font-size:1.25rem;}
+    .section-divider-wrap{padding:4px 0 32px;}
+    .faq-question{font-size:1.02rem; gap:14px;}
   }
 </style>
 
-<style>
-  /* ---------- Insurance Workshops page ---------- */
-
-  /* Hero: navy band, stacked, distinct from home/strategy pages */
-  .ws-hero{
-    background:var(--navy);
-    padding:80px 0 72px;
-    text-align:left;
-  }
-  .ws-hero .eyebrow{color:var(--teal); display:block; margin-bottom:26px;}
-  .ws-hero h1{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    font-size:clamp(2.7rem, 5.4vw, 4.6rem);
-    color:var(--white);
-    line-height:1.08;
-    margin-bottom:26px;
-  }
-  .ws-hero p{color:#c7d2ce; font-size:1.15rem; line-height:1.6; max-width:600px; margin-bottom:36px;}
-  .ws-hero .hero-ctas{display:flex; align-items:center; gap:32px; flex-wrap:wrap;}
-
-  /* Full-width three-column row */
-  .ws-columns-section{padding-top:88px;}
-  .ws-columns{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:28px;
-  }
-  .ws-col{
-    background:var(--white);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:32px 30px;
-  }
-  .ws-col .eyebrow-small{
-    font-family:'DM Sans', sans-serif; font-size:0.78rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--teal); font-weight:600; margin-bottom:12px; display:block;
-  }
-  .ws-col h3{
-    font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest);
-    font-size:1.4rem; margin-bottom:18px; line-height:1.15;
-  }
-  .ws-col p{color:var(--text-mute); font-size:0.96rem; line-height:1.55; margin-bottom:16px;}
-  .ws-col .checklist{grid-template-columns:1fr; gap:12px;}
-  .ws-col .checklist li{font-size:0.92rem; line-height:1.5;}
-  .ws-col .topic-pills{gap:9px; margin-top:4px;}
-  .ws-col .topic-pill{font-size:0.85rem; padding:8px 14px;}
-
-  .checklist.problem-list li::before{
-    background:rgba(28,43,51,0.06);
-    border-color:var(--text-faint,#8a9591);
-  }
-
-  /* How it works: full-width 4-column flow */
-  .ws-flow-section{padding-top:0;}
-  .ws-flow{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:28px;
-    position:relative;
-    margin-top:8px;
-  }
-  .ws-flow::before{
-    content:'';
-    position:absolute; top:24px; left:6%; right:6%; height:2px;
-    background:repeating-linear-gradient(to right, var(--border) 0 8px, transparent 8px 16px);
-    z-index:0;
-  }
-  .ws-flow-step{position:relative; z-index:1;}
-  .ws-flow-step .num{
-    width:48px; height:48px; border-radius:50%; background:var(--forest); color:var(--cream);
-    display:flex; align-items:center; justify-content:center; font-family:'Archivo', sans-serif;
-    font-weight:800; font-size:1.1rem; margin-bottom:20px;
-  }
-  .ws-flow-step .journey-title{font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--forest); font-size:1.18rem; margin-bottom:8px;}
-  .ws-flow-step p{color:var(--text-mute); font-size:0.92rem; line-height:1.5; margin:0;}
-
-  /* Industry Trends & Strategy */
-  .ws-trends{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:22px;
-    margin-top:8px;
-  }
-  .ws-trend-card{
-    background:var(--cream-2);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:28px 30px;
-  }
-  .ws-trend-label{
-    font-family:'DM Sans', sans-serif; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
-    color:var(--text-mute); font-weight:600; margin-bottom:10px;
-  }
-  .ws-trend-text{color:var(--text-dark); font-size:0.98rem; line-height:1.55; margin-bottom:18px;}
-  .ws-strategy-label{
-    font-family:'DM Sans', sans-serif; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
-    color:var(--teal); font-weight:600; margin-bottom:10px;
-  }
-  .ws-strategy-text{color:var(--forest); font-size:0.98rem; line-height:1.55; font-weight:500; margin:0;}
-
-  @media (max-width:900px){
-    .ws-columns{grid-template-columns:1fr; gap:20px;}
-    .ws-flow{grid-template-columns:repeat(2,1fr); row-gap:36px;}
-    .ws-flow::before{display:none;}
-    .ws-trends{grid-template-columns:1fr;}
-  }
-  @media (max-width:760px){
-    .ws-hero{padding:48px 0 44px;}
-    .ws-hero p{font-size:1.05rem;}
-    .ws-columns-section{padding-top:64px;}
-    .ws-flow{grid-template-columns:1fr;}
-  }
-</style>
-</head>
 <body>
 
 {% include header.html %}
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="ws-hero">
-    <div class="wrap">
-      <span class="eyebrow">For Medical Professionals &amp; Wellness Centers</span>
-      <h1>Fill Every Seat At Your<br>Next Health Seminar.</h1>
-      <p>Private seminars, patient education events, wellness networking &mdash; whatever you&rsquo;re hosting, we build the Meta ad campaign that gets the right people in the room. No boosted posts. No guesswork.</p>
-      <div class="hero-ctas">
-        <a href="/contact/" class="btn btn-primary">Tell Us About Your Event</a>
+  <!-- PRICING HERO -->
+  <section class="process-hero">
+    <div class="wrap process-hero-grid">
+      <div>
+        <span class="eyebrow">Packages</span>
+        <h1>Simple packages. No surprises.</h1>
+      </div>
+      <div class="process-hero-copy">
+        <p class="hero-lead">We provide the infrastructure for your event. Ad spend is scoped separately to fit your event &mdash; from a $400 grand opening to a $5,000 expo &mdash; but what we deliver scales in three clear tiers.</p>
+        <p>Every package includes full campaign management inside Meta Ads Manager, performance reporting, and direct access to your strategist &mdash; no account handoffs, no junior-team churn.</p>
       </div>
     </div>
   </section>
 
-  <!-- THREE-COLUMN ROW -->
-  <section class="ws-columns-section">
+  <div class="section-divider-wrap">
+    <div class="wrap"><div class="section-divider"></div></div>
+  </div>
+
+  <!-- PRICING GRID -->
+  <section class="pricing">
+    <div class="wrap">
+      <div class="pricing-grid">
+        <div class="pcard">
+          <div class="tier">Proof</div>
+          <div class="price">$1,500<span>/event</span></div>
+          <div class="price-note">Best for a single, focused launch</div>
+          <div class="pcard-events">
+            <span class="pcard-events-label">Best for</span>
+            <div class="pcard-events-tags">
+              <span class="pcard-tag">Grand Openings</span>
+            </div>
+          </div>
+          <ul>
+            <li>One Ads Manager campaign</li>
+            <li>3&ndash;4 targeted ad messages</li>
+            <li>Local, radius-targeted delivery</li>
+            <li>Retargeting for engaged non-visitors</li>
+            <li>Reminder ads in the final 48 hours</li>
+            <li>Post-campaign performance reporting</li>
+          </ul>
+          <a href="/contact/" class="btn btn-ghost">Get started</a>
+        </div>
+
+        <div class="pcard featured">
+          <div class="tier">Growth</div>
+          <div class="price">$3,000<span>/event</span></div>
+          <div class="price-note">Our most popular package</div>
+          <div class="pcard-events">
+            <span class="pcard-events-label">Best for</span>
+            <div class="pcard-events-tags">
+              <span class="pcard-tag">Insurance Workshops</span>
+              <span class="pcard-tag">Financial Workshops</span>
+              <span class="pcard-tag">Real Estate Workshops</span>
+              <span class="pcard-tag">Healthcare &amp; Wellness</span>
+            </div>
+          </div>
+          <ul>
+            <li>Everything in Proof, plus:</li>
+            <li>5&ndash;7 targeted ad messages</li>
+            <li>RSVP / registration page guidance</li>
+            <li>Full retargeting sequence for non-registrants</li>
+            <li>Deadline &amp; urgency messaging in the final 72 hours</li>
+            <li>Organic &amp; boosted social content support</li>
+          </ul>
+          <a href="/contact/" class="btn btn-primary">Get started</a>
+        </div>
+
+        <div class="pcard">
+          <div class="tier">Scale</div>
+          <div class="price">$5,500<span>/event</span></div>
+          <div class="price-note">For multi-day or high-capacity events</div>
+          <div class="pcard-events">
+            <span class="pcard-events-label">Best for</span>
+            <div class="pcard-events-tags">
+              <span class="pcard-tag">Live Music &amp; Entertainment</span>
+              <span class="pcard-tag">Expos &amp; Conferences</span>
+              <span class="pcard-tag">Festivals</span>
+            </div>
+          </div>
+          <ul>
+            <li>Everything in Growth, plus:</li>
+            <li>6&ndash;8+ ads across multiple audience segments</li>
+            <li>Multi-tier ticketing / registration support</li>
+            <li>Advanced Custom Audience &amp; cross-campaign retargeting</li>
+            <li>Full-funnel organic &amp; boosted content calendar</li>
+            <li>Post-event audience carry-forward for future campaigns</li>
+          </ul>
+          <a href="/contact/" class="btn btn-ghost">Get started</a>
+        </div>
+      </div>
+      <p class="pricing-note">Ballpark starting points &mdash; every quote is scoped to your specific event. Ad spend is always budgeted and billed separately.</p>
+    </div>
+  </section>
+
+  <!-- SECOND COMPARISON: TIER FEATURE MATRIX -->
+  <section class="tier-compare-section">
     <div class="wrap">
       <div class="section-head center">
-        <span class="eyebrow">The Full Picture</span>
-        <h2>Where seminars go wrong, and how we fix it</h2>
+        <span class="eyebrow">Compare Packages</span>
+        <h2>What&rsquo;s included, tier by tier.</h2>
+        <p>A closer look at exactly what changes as you move from Proof to Growth to Scale.</p>
       </div>
-      <div class="ws-columns">
-        <div class="ws-col">
-          <span class="eyebrow-small">Sound Familiar?</span>
-          <h3>The problems we hear most</h3>
-          <ul class="checklist problem-list">
-            <li>Ads that generate clicks but empty seats</li>
-            <li>One generic ad running for two straight weeks</li>
-            <li>Agencies that don&rsquo;t understand healthcare marketing or compliance</li>
-            <li>No follow-up for people who never RSVP&rsquo;d</li>
-            <li>No-shows eating into your venue budget</li>
-            <li>Every audience treated the same regardless of the health topic</li>
-          </ul>
-        </div>
-        <div class="ws-col">
-          <span class="eyebrow-small">How We Help</span>
-          <h3>One invite isn&rsquo;t one ad &mdash; it&rsquo;s five or six</h3>
-          <p>We break your event invite into five or six focused messages, each speaking to a different reason someone actually shows up. Meta shifts delivery toward whichever messages are driving real RSVPs.</p>
-          <div class="topic-pills">
-            <span class="topic-pill">What to expect at the event</span>
-            <span class="topic-pill">Meet your care team</span>
-            <span class="topic-pill">Common questions patients ask</span>
-            <span class="topic-pill">Why this topic matters</span>
-            <span class="topic-pill">Seats filling fast</span>
+
+      <div class="compare-wrap" style="border:1px solid var(--border);">
+        <table class="simple" style="min-width:640px;">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Proof</th>
+              <th>Growth</th>
+              <th>Scale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ad messages per campaign</td>
+              <td>3&ndash;4</td>
+              <td>5&ndash;7</td>
+              <td>6&ndash;8+</td>
+            </tr>
+            <tr>
+              <td>Targeted delivery radius</td>
+              <td>Local</td>
+              <td>Local + regional</td>
+              <td>Regional / multi-market</td>
+            </tr>
+            <tr>
+              <td>Retargeting sequence</td>
+              <td>Basic (non-visitors)</td>
+              <td>Full (non-registrants)</td>
+              <td>Advanced Custom Audiences</td>
+            </tr>
+            <tr>
+              <td>RSVP / registration guidance</td>
+              <td>&mdash;</td>
+              <td>&#10003;</td>
+              <td>&#10003;</td>
+            </tr>
+            <tr>
+              <td>Multi-tier ticketing support</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+              <td>&#10003;</td>
+            </tr>
+            <tr>
+              <td>Organic &amp; boosted content support</td>
+              <td>&mdash;</td>
+              <td>&#10003;</td>
+              <td>Full content calendar</td>
+            </tr>
+            <tr>
+              <td>Post-event audience carry-forward</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+              <td>&#10003;</td>
+            </tr>
+            <tr>
+              <td>Performance reporting</td>
+              <td>&#10003;</td>
+              <td>&#10003;</td>
+              <td>&#10003;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">FAQs</span>
+        <h2>Questions about pricing.</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question" type="button">
+            <span>Is ad spend included in the package price?</span>
+            <span class="faq-plus"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No. Package pricing covers our strategy, ad management, creative direction, and reporting. Ad spend is scoped and quoted separately based on your event size, audience, and goals &mdash; typically anywhere from $400 to $5,000+.</div>
           </div>
         </div>
-        <div class="ws-col">
-          <span class="eyebrow-small">What&rsquo;s Included</span>
-          <h3>What we handle for your event</h3>
-          <ul class="checklist">
-            <li>Meta campaign setup &amp; management</li>
-            <li>Five to seven targeted ad messages</li>
-            <li>RSVP / registration page guidance</li>
-            <li>Retargeting for non-registrants</li>
-            <li>Reminder ads as the date approaches</li>
-            <li>Post-event performance reporting</li>
-          </ul>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>How do I know which tier is right for my event?</span>
+            <span class="faq-plus"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Most single-day, single-location events fit Proof or Growth. Multi-day events, festivals, expos, or anything with tiered ticketing usually need Scale. Tell us about your event and we&rsquo;ll recommend a tier before you commit to anything.</div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="ws-flow-section">
-    <div class="wrap">
-      <div class="section-head center">
-        <span class="eyebrow">How It Works</span>
-        <h2>From first conversation to a full room</h2>
-      </div>
-      <div class="ws-flow">
-        <div class="ws-flow-step">
-          <div class="num">1</div>
-          <div class="journey-title">Learn Your Audience</div>
-          <p>We learn your seminar topic, your specialty and who you&rsquo;re trying to reach.</p>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Can I upgrade tiers mid-campaign?</span>
+            <span class="faq-plus"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. If your event is growing faster than expected, we can move you up a tier and add the additional ad messages, retargeting, and audience segments without restarting the campaign.</div>
+          </div>
         </div>
-        <div class="ws-flow-step">
-          <div class="num">2</div>
-          <div class="journey-title">Build the Campaign</div>
-          <p>We write and launch five or six focused ads instead of one generic invite.</p>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>What&rsquo;s the typical timeline to launch?</span>
+            <span class="faq-plus"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We generally recommend starting 4&ndash;6 weeks before your event so we have room to test messaging angles and build a proper retargeting sequence. Shorter timelines are possible &mdash; talk to us about your date.</div>
+          </div>
         </div>
-        <div class="ws-flow-step">
-          <div class="num">3</div>
-          <div class="journey-title">Fill the Room</div>
-          <p>Meta directs budget toward the messages driving real RSVPs, not just clicks.</p>
-        </div>
-        <div class="ws-flow-step">
-          <div class="num">4</div>
-          <div class="journey-title">Follow Up With No-Shows</div>
-          <p>We retarget people who engaged but didn&rsquo;t register, right up until the event.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INDUSTRY TRENDS -->
-  <section>
-    <div class="wrap">
-      <div class="section-head center">
-        <span class="eyebrow">What&rsquo;s Changing</span>
-        <h2>Industry trends &amp; our strategy</h2>
-        <p>A few shifts we&rsquo;re seeing across healthcare and wellness event marketing right now, and how we build around them.</p>
-      </div>
-      <div class="ws-trends">
-        <div class="ws-trend-card">
-          <div class="ws-trend-label">The Trend</div>
-          <p class="ws-trend-text">More patients research health topics and providers on social media before they ever schedule an appointment.</p>
-          <div class="ws-strategy-label">Our Strategy</div>
-          <p class="ws-strategy-text">We meet them where they already are, with education-first content that builds trust before we ever ask for the RSVP.</p>
-        </div>
-        <div class="ws-trend-card">
-          <div class="ws-trend-label">The Trend</div>
-          <p class="ws-trend-text">Meta places extra restrictions on health-related ad targeting to protect sensitive personal information.</p>
-          <div class="ws-strategy-label">Our Strategy</div>
-          <p class="ws-strategy-text">We build campaigns that work within those guardrails from day one, so your ads stay compliant and still reach the right audience.</p>
-        </div>
-        <div class="ws-trend-card">
-          <div class="ws-trend-label">The Trend</div>
-          <p class="ws-trend-text">Wellness and preventive-care events are competing for attention against a growing number of health influencers and online content.</p>
-          <div class="ws-strategy-label">Our Strategy</div>
-          <p class="ws-strategy-text">We position your seminar as the credible, in-person alternative &mdash; real answers from real professionals, not another feed post.</p>
-        </div>
-        <div class="ws-trend-card">
-          <div class="ws-trend-label">The Trend</div>
-          <p class="ws-trend-text">No-show rates for free or low-cost health seminars tend to run higher than paid events.</p>
-          <div class="ws-strategy-label">Our Strategy</div>
-          <p class="ws-strategy-text">We don&rsquo;t stop at the RSVP. We retarget registrants with reminders right up through the day of the event to protect your actual turnout.</p>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Do you require a long-term contract?</span>
+            <span class="faq-plus"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No. Packages are scoped per event. If you run events regularly, we can talk about a standing arrangement, but there&rsquo;s no obligation to commit beyond a single campaign.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -978,13 +850,32 @@
   <!-- FINAL CTA -->
   <section class="final-cta" id="contact">
     <div class="wrap">
-      <h2>Ready to fill your next seminar?</h2>
+      <h2>Not sure which package fits?</h2>
       <a href="/contact/" class="btn btn-primary">Tell Us About Your Event</a>
     </div>
   </section>
 
 </main>
 
+<script>
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var head = item.querySelector('.faq-question');
+    var body = item.querySelector('.faq-answer');
+    var inner = item.querySelector('.faq-answer-inner');
+    if (item.classList.contains('open')) body.style.maxHeight = inner.offsetHeight + 'px';
+    head.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-answer').style.maxHeight = 0;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = inner.offsetHeight + 'px';
+      }
+    });
+  });
+</script>
 
 {% include footer.html %}
 
