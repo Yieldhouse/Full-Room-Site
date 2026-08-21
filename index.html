@@ -231,6 +231,7 @@
   .section-head h2.nowrap-head{
     white-space:nowrap;
     font-size:clamp(1.5rem, 5.6vw, 3.4rem);
+    display:inline-block;
   }
   .section-head p{color:var(--text-mute); font-size:1.08rem;}
 
@@ -340,6 +341,12 @@
   .pcard .price{font-family:'Metropolis', sans-serif; font-size:2.6rem; font-weight:700; color:var(--forest); margin-bottom:6px;}
   .pcard .price span{font-family:'NanumSquareNeo', sans-serif; font-size:0.88rem; font-weight:500; color:var(--text-mute);}
   .pcard .price-note{color:var(--text-mute); font-size:0.84rem; margin-bottom:26px;}
+  .pcard .price-badge{
+    display:inline-flex; align-items:center; gap:6px; font-family:'NanumSquareNeo', sans-serif;
+    font-size:0.78rem; font-weight:600; color:var(--forest); background:rgba(20,176,150,0.12);
+    border:1px solid rgba(20,176,150,0.3); border-radius:999px; padding:5px 12px; margin-bottom:14px;
+  }
+  .pcard .price-badge::before{content:'\2713'; color:var(--teal); font-weight:700;}
   .pcard-events{
     padding:16px 0 22px;
     border-top:1px solid var(--border);
@@ -747,6 +754,7 @@
         <div class="pcard">
           <div class="tier">Proof</div>
           <div class="price">$1,500<span>/event</span></div>
+          <div class="price-badge">Ad spend included</div>
           <div class="price-note">Best for a single, focused launch</div>
           <div class="pcard-events">
             <span class="pcard-events-label">Best for</span>
@@ -768,6 +776,7 @@
         <div class="pcard featured">
           <div class="tier">Growth</div>
           <div class="price">$3,000<span>/event</span></div>
+          <div class="price-badge">Ad spend included</div>
           <div class="price-note">Our most popular package</div>
           <div class="pcard-events">
             <span class="pcard-events-label">Best for</span>
@@ -792,6 +801,7 @@
         <div class="pcard">
           <div class="tier">Scale</div>
           <div class="price">$5,500<span>/event</span></div>
+          <div class="price-badge">Ad spend included</div>
           <div class="price-note">For multi-day or high-capacity events</div>
           <div class="pcard-events">
             <span class="pcard-events-label">Best for</span>
@@ -822,7 +832,7 @@
     <div class="compare-inner">
       <div class="section-head center compare-head">
         <span class="eyebrow">Why Full Room Digital</span>
-        <h2>Not all event marketing is <em>created equal.</em></h2>
+        <h2>Not all event marketing<br>is <em>created equal.</em></h2>
         <p>See how Full Room stacks up against the alternatives &mdash; and why the difference matters for your next event.</p>
       </div>
 

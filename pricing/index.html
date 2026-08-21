@@ -225,6 +225,7 @@
   .section-head h2.nowrap-head{
     white-space:nowrap;
     font-size:clamp(1.5rem, 5.6vw, 3.4rem);
+    display:inline-block;
   }
   .section-head p{color:var(--text-mute); font-size:1.08rem;}
 
@@ -324,6 +325,32 @@
   .pcard .price{font-family:'Metropolis', sans-serif; font-size:2.6rem; font-weight:700; color:var(--forest); margin-bottom:6px;}
   .pcard .price span{font-family:'NanumSquareNeo', sans-serif; font-size:0.88rem; font-weight:500; color:var(--text-mute);}
   .pcard .price-note{color:var(--text-mute); font-size:0.84rem; margin-bottom:26px;}
+  .pcard .price-badge{
+    display:inline-flex; align-items:center; gap:6px; font-family:'NanumSquareNeo', sans-serif;
+    font-size:0.78rem; font-weight:600; color:var(--forest); background:rgba(20,176,150,0.12);
+    border:1px solid rgba(20,176,150,0.3); border-radius:999px; padding:5px 12px; margin-bottom:14px;
+  }
+  .pcard .price-badge::before{content:'\2713'; color:var(--teal); font-weight:700;}
+
+  /* Event-type price switcher */
+  .event-switcher{text-align:center; margin:0 0 40px;}
+  .event-switcher-label{
+    display:block; font-family:'NanumSquareNeo', sans-serif; font-size:0.8rem; font-weight:600;
+    color:var(--text-mute); margin-bottom:16px;
+  }
+  .industry-tabs{display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
+  .industry-tab{
+    font-family:'NanumSquareNeo', sans-serif; font-size:0.86rem; font-weight:600; color:var(--text-mute);
+    background:var(--white); border:1px solid var(--border); border-radius:999px; padding:10px 20px;
+    cursor:pointer; transition:background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .industry-tab:hover{border-color:var(--teal); color:var(--forest);}
+  .industry-tab.active{background:var(--forest); border-color:var(--forest); color:var(--white);}
+  .price-updated-note{
+    display:none; text-align:center; font-family:'NanumSquareNeo', sans-serif; font-size:0.84rem;
+    color:var(--teal); margin:-16px 0 32px;
+  }
+  .price-updated-note.show{display:block;}
   .pcard ul{margin:0 0 30px; display:flex; flex-direction:column; gap:13px;}
   .pcard li{color:var(--text-mute); font-size:0.9rem; padding-left:24px; position:relative;}
   .pcard li::before{
@@ -643,11 +670,29 @@
   <!-- PRICING GRID -->
   <section class="pricing">
     <div class="wrap">
+
+      <div class="event-switcher">
+        <span class="event-switcher-label">See pricing for your event type</span>
+        <div class="industry-tabs" id="eventTabs">
+          <button class="industry-tab active" data-event="all" type="button">All Events</button>
+          <button class="industry-tab" data-event="insurance" type="button">Insurance Workshops</button>
+          <button class="industry-tab" data-event="financial" type="button">Financial Workshops</button>
+          <button class="industry-tab" data-event="realestate" type="button">Real Estate Workshops</button>
+          <button class="industry-tab" data-event="healthcare" type="button">Healthcare &amp; Wellness</button>
+          <button class="industry-tab" data-event="grandopening" type="button">Grand Opening</button>
+          <button class="industry-tab" data-event="entertainment" type="button">Live Music &amp; Entertainment</button>
+          <button class="industry-tab" data-event="expos" type="button">Expos &amp; Conferences</button>
+          <button class="industry-tab" data-event="festivals" type="button">Festivals</button>
+        </div>
+      </div>
+      <p class="price-updated-note" id="priceUpdatedNote">Prices below reflect typical scope for this event type.</p>
+
       <div class="pricing-grid">
         <div class="pcard">
           <div class="tier">Proof</div>
-          <div class="price">$1,500<span>/event</span></div>
-          <div class="price-note">Best for a single, focused launch</div>
+          <div class="price" id="priceProof">$1,500<span>/event</span></div>
+          <div class="price-badge">Ad spend included</div>
+          <div class="price-note" id="noteProof">Best for a single, focused launch</div>
           <div class="pcard-events">
             <span class="pcard-events-label">Best for</span>
             <div class="pcard-events-tags">
@@ -667,8 +712,9 @@
 
         <div class="pcard featured">
           <div class="tier">Growth</div>
-          <div class="price">$3,000<span>/event</span></div>
-          <div class="price-note">Our most popular package</div>
+          <div class="price" id="priceGrowth">$3,000<span>/event</span></div>
+          <div class="price-badge">Ad spend included</div>
+          <div class="price-note" id="noteGrowth">Our most popular package</div>
           <div class="pcard-events">
             <span class="pcard-events-label">Best for</span>
             <div class="pcard-events-tags">
@@ -691,8 +737,9 @@
 
         <div class="pcard">
           <div class="tier">Scale</div>
-          <div class="price">$5,500<span>/event</span></div>
-          <div class="price-note">For multi-day or high-capacity events</div>
+          <div class="price" id="priceScale">$5,500<span>/event</span></div>
+          <div class="price-badge">Ad spend included</div>
+          <div class="price-note" id="noteScale">For multi-day or high-capacity events</div>
           <div class="pcard-events">
             <span class="pcard-events-label">Best for</span>
             <div class="pcard-events-tags">
@@ -874,6 +921,43 @@
         item.classList.add('open');
         body.style.maxHeight = inner.offsetHeight + 'px';
       }
+    });
+  });
+</script>
+
+<script>
+  var eventPricing = {
+    all:           { proof: '$1,500', growth: '$3,000', scale: '$5,500', note: 'Ballpark pricing across all event types &mdash; select yours above for a closer estimate.' },
+    insurance:     { proof: '$1,500', growth: '$3,000', scale: '$5,500', note: 'Typical scope for insurance workshop dinner seminars.' },
+    financial:     { proof: '$1,500', growth: '$3,000', scale: '$5,500', note: 'Typical scope for financial advisor workshops.' },
+    realestate:    { proof: '$1,500', growth: '$3,100', scale: '$5,600', note: 'Typical scope for real estate seminars and investor events.' },
+    healthcare:    { proof: '$1,500', growth: '$3,000', scale: '$5,500', note: 'Typical scope for healthcare & wellness workshops.' },
+    grandopening:  { proof: '$1,200', growth: '$2,600', scale: '$4,800', note: 'Typical scope for grand openings & ribbon cuttings &mdash; usually our lightest lift.' },
+    entertainment: { proof: '$1,800', growth: '$3,600', scale: '$6,200', note: 'Typical scope for live music & entertainment events.' },
+    expos:         { proof: '$2,000', growth: '$4,000', scale: '$6,800', note: 'Typical scope for expos & multi-day conferences &mdash; our highest-volume campaigns.' },
+    festivals:     { proof: '$1,900', growth: '$3,800', scale: '$6,500', note: 'Typical scope for festivals with multi-segment audiences.' }
+  };
+
+  var priceProof = document.getElementById('priceProof');
+  var priceGrowth = document.getElementById('priceGrowth');
+  var priceScale = document.getElementById('priceScale');
+  var updatedNote = document.getElementById('priceUpdatedNote');
+
+  document.querySelectorAll('#eventTabs .industry-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('#eventTabs .industry-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+
+      var key = tab.getAttribute('data-event');
+      var data = eventPricing[key];
+      if (!data) return;
+
+      priceProof.innerHTML = data.proof + '<span>/event</span>';
+      priceGrowth.innerHTML = data.growth + '<span>/event</span>';
+      priceScale.innerHTML = data.scale + '<span>/event</span>';
+
+      updatedNote.innerHTML = data.note;
+      updatedNote.classList.add('show');
     });
   });
 </script>
